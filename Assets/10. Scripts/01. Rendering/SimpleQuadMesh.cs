@@ -1,15 +1,18 @@
-﻿using System;
+﻿using Study.Utilities;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-namespace _10._Scripts._01._Rendering
+namespace Study3D.Rendering
 {
     public class SimpleQuadMesh : MonoBehaviour
     {
-        [Header("크기")] 
-        public float width = 2f;
+        [Header("크기")] public float width = 2f;
         public float height = 2f;
 
+        [Header("Settings")] [SerializeField] private bool flipWinding = false;
+
         private Mesh mesh;
+        private bool builtFlip;
 
         private void Awake()
         {
@@ -24,32 +27,48 @@ namespace _10._Scripts._01._Rendering
 
         private void Update()
         {
-            
+            if (SimpleInput.GetKeyDown(Key.Space))
+            {
+                flipWinding = !flipWinding;
+                if (flipWinding != builtFlip) Build();
+            }
         }
 
         private void Build()
         {
             mesh.Clear();
-            
+
             // 첫번째로 정점(버텍스)을 생성해 준다.
             // 왼쪽 밑, 오른쪽 밑, 왼쪽 상단, 오른쪽 상단
             Vector3[] vertices =
             {
-                new Vector3(-width / 2f, 0f, 0f), // Left Bottom
-                new Vector3(width / 2f, 0f, 0f), // Right Bottom
-                new Vector3(-width / 2f, height, 0f), // Left Top
-                new Vector3(width / 2f, height, 0f), // Right Top
+                new(-width / 2f, 0f, 0f), // Left Bottom
+                new(width / 2f, 0f, 0f), // Right Bottom
+                new(-width / 2f, height, 0f), // Left Top
+                new(width / 2f, height, 0f), // Right Top
             };
-            
+
             // 정점 생성이 끝났으면 삼각형 정보를 넣어 준다.
-            int[] triangles = { 0, 2, 1, 2, 3, 1 };
-            Vector3[] normals = { Vector3.back, Vector3.back, Vector3.back, Vector3.back };
+            int[] triangles = flipWinding
+                ? new[] { 0, 1, 2, 2, 1, 3 } // 뒷면 (앞면은 컬링됨)
+                : new[] { 0, 2, 1, 2, 3, 1 }; // 앞면
+
+            // 삼각형이 뒤집히면 보이는 면도 반대가 되니까 뒤집힘
+            Vector3 normalDir = flipWinding ? Vector3.forward : Vector3.back;
+
+            Vector3[] normals = { normalDir, normalDir, normalDir, normalDir };
+            
+            // Left Bottom
+            // Right Bottom
+            // Left Top
+            // Right Top
+            
             Vector2[] uv =
             {
-                new Vector2(0f, 0f),
-                new Vector2(1f, 0f),
-                new Vector2(0f, 1f),
-                new Vector2(1f, 1f),
+                new(0f, 0f),
+                new(1f, 0f),
+                new(0f, 1f),
+                new(1f, 1f),
             };
 
             mesh.vertices = vertices;
@@ -57,6 +76,52 @@ namespace _10._Scripts._01._Rendering
             mesh.normals = normals;
             mesh.uv = uv;
             mesh.RecalculateNormals();
+
+            // builtFlip을 갱신해서 토글이 작동하도록 한다
+            builtFlip = flipWinding;
         }
+
+#if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            // Gizmos와 Handles 모두 객체의 로컬 좌표계를 기준으로 그리도록 행렬 적용
+            Gizmos.matrix = transform.localToWorldMatrix;
+            UnityEditor.Handles.matrix = transform.localToWorldMatrix;
+
+            Vector3[] previewVertices =
+            {
+                new (-width / 2f, 0, 0f),
+                new (width / 2f, 0, 0f),
+                new (-width / 2f, height, 0f),
+                new (width / 2f, height, 0f),
+            };
+
+            Vector3 previewNormal = flipWinding ? Vector3.forward : Vector3.back;
+
+            // 씬 뷰에 표시될 텍스트의 스타일 설정
+            GUIStyle labelStyle = new GUIStyle();
+            labelStyle.normal.textColor = Color.white;
+            labelStyle.fontSize = 14;
+            labelStyle.fontStyle = FontStyle.Bold;
+
+            for (int i = 0; i < previewVertices.Length; i++)
+            {
+                Vector3 vertex = previewVertices[i];
+
+                // 1. 정점(Vertex) 렌더링
+                Gizmos.color = Color.cyan;
+                Gizmos.DrawSphere(vertex, 0.05f);
+
+                // 2. 노말(Normal) 렌더링
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawRay(vertex, previewNormal * 0.5f);
+
+                // 3. 인덱스(Index) 텍스트 렌더링
+                // 구체와 텍스트가 겹치지 않도록 위치를 살짝 오프셋(Offset) 처리
+                Vector3 labelOffset = new Vector3(0.1f, 0.1f, 0f);
+                UnityEditor.Handles.Label(vertex + labelOffset, $"[{i}]", labelStyle);
+            }
+        }
+#endif
     }
 }
