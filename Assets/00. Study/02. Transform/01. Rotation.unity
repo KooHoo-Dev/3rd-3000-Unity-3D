@@ -201,11 +201,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 173484652}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c586aa011202c654cbc165c5fd2dae47, type: 3}
+  m_Script: {fileID: 11500000, guid: d1815235c1064bee84387d8627289ff8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Common.DirectionGizmo
-  length: 1
-  onlyWhenSelected: 0
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transforms.LookAtTarget
+  target: {fileID: 1355889899}
 --- !u!114 &173484655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,10 +214,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 173484652}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b9165bd2b4d7474e89b6ef4faf629bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 1902320edde44769bb9a6ded6bd7257e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transforms.LookAtTarget
-  target: {fileID: 1355889899}
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transform.DirectionGizmo
+  length: 1
 --- !u!1 &224478199
 GameObject:
   m_ObjectHideFlags: 0
@@ -883,7 +882,7 @@ GameObject:
   - component: {fileID: 505230759}
   - component: {fileID: 505230758}
   - component: {fileID: 505230757}
-  - component: {fileID: 505230756}
+  - component: {fileID: 505230760}
   m_Layer: 0
   m_Name: Cube Quaternion
   m_TagString: Untagged
@@ -907,22 +906,6 @@ Transform:
   - {fileID: 1103284302}
   m_Father: {fileID: 152879764}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &505230756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 505230754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60ec5ac73157e8e4a9a2a4fd71e28138, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transforms.RotationMethodsDemo
-  method: 2
-  axis: {x: 1, y: 0, z: 0}
-  degreesPerSecond: 60
-  label: {fileID: 595785634}
 --- !u!23 &505230757
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1001,6 +984,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 505230754}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &505230760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505230754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47f27c2f957a496a85b78b9bba61d03b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transform.RotationMethodsDemo
+  method: 2
+  axis: {x: 1, y: 0, z: 0}
+  degreesPerSecond: 60
 --- !u!1 &595785633
 GameObject:
   m_ObjectHideFlags: 0
@@ -1860,7 +1858,7 @@ GameObject:
   - component: {fileID: 1158380489}
   - component: {fileID: 1158380488}
   - component: {fileID: 1158380487}
-  - component: {fileID: 1158380486}
+  - component: {fileID: 1158380490}
   m_Layer: 0
   m_Name: Cube Euler
   m_TagString: Untagged
@@ -1884,22 +1882,6 @@ Transform:
   - {fileID: 224478200}
   m_Father: {fileID: 152879764}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1158380486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158380484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60ec5ac73157e8e4a9a2a4fd71e28138, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transforms.RotationMethodsDemo
-  method: 0
-  axis: {x: 1, y: 0, z: 0}
-  degreesPerSecond: 60
-  label: {fileID: 1665573020}
 --- !u!23 &1158380487
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1978,6 +1960,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1158380484}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1158380490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158380484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47f27c2f957a496a85b78b9bba61d03b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transform.RotationMethodsDemo
+  method: 0
+  axis: {x: 1, y: 0, z: 0}
+  degreesPerSecond: 60
 --- !u!1 &1319962822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1990,7 +1987,7 @@ GameObject:
   - component: {fileID: 1319962827}
   - component: {fileID: 1319962826}
   - component: {fileID: 1319962825}
-  - component: {fileID: 1319962824}
+  - component: {fileID: 1319962828}
   m_Layer: 0
   m_Name: Cube Rotate
   m_TagString: Untagged
@@ -2014,22 +2011,6 @@ Transform:
   - {fileID: 435825429}
   m_Father: {fileID: 152879764}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1319962824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1319962822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60ec5ac73157e8e4a9a2a4fd71e28138, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transforms.RotationMethodsDemo
-  method: 1
-  axis: {x: 1, y: 0, z: 0}
-  degreesPerSecond: 60
-  label: {fileID: 971670677}
 --- !u!23 &1319962825
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2108,6 +2089,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319962822}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1319962828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319962822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47f27c2f957a496a85b78b9bba61d03b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transform.RotationMethodsDemo
+  method: 1
+  axis: {x: 1, y: 0, z: 0}
+  degreesPerSecond: 60
 --- !u!1001 &1355889898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2163,147 +2159,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5616578435940858360, guid: e73c6d0072206944fa3be6b8b67b7b21, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1355889910}
-    - targetCorrespondingSourceObject: {fileID: 5616578435940858360, guid: e73c6d0072206944fa3be6b8b67b7b21, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1355889909}
-    - targetCorrespondingSourceObject: {fileID: 4918602258308563291, guid: e73c6d0072206944fa3be6b8b67b7b21, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1355889908}
-    - targetCorrespondingSourceObject: {fileID: 455491446537280055, guid: e73c6d0072206944fa3be6b8b67b7b21, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1355889907}
-    - targetCorrespondingSourceObject: {fileID: 451719103518016513, guid: e73c6d0072206944fa3be6b8b67b7b21, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1355889906}
-    - targetCorrespondingSourceObject: {fileID: 1489535265155942448, guid: e73c6d0072206944fa3be6b8b67b7b21, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1355889905}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e73c6d0072206944fa3be6b8b67b7b21, type: 3}
 --- !u!4 &1355889899 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 869613691892646929, guid: e73c6d0072206944fa3be6b8b67b7b21, type: 3}
   m_PrefabInstance: {fileID: 1355889898}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1355889900 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1489535265155942448, guid: e73c6d0072206944fa3be6b8b67b7b21, type: 3}
-  m_PrefabInstance: {fileID: 1355889898}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1355889901 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 451719103518016513, guid: e73c6d0072206944fa3be6b8b67b7b21, type: 3}
-  m_PrefabInstance: {fileID: 1355889898}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1355889902 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 455491446537280055, guid: e73c6d0072206944fa3be6b8b67b7b21, type: 3}
-  m_PrefabInstance: {fileID: 1355889898}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1355889903 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4918602258308563291, guid: e73c6d0072206944fa3be6b8b67b7b21, type: 3}
-  m_PrefabInstance: {fileID: 1355889898}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1355889904 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5616578435940858360, guid: e73c6d0072206944fa3be6b8b67b7b21, type: 3}
-  m_PrefabInstance: {fileID: 1355889898}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1355889905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1355889900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d67a9860d624eeb449bcc88125880fdd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Common.Spinner
-  axis: {x: 0, y: 1, z: 0}
-  degreesPerSecond: 720
-  space: 1
---- !u!114 &1355889906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1355889901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d67a9860d624eeb449bcc88125880fdd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Common.Spinner
-  axis: {x: 0, y: 1, z: 0}
-  degreesPerSecond: -720
-  space: 1
---- !u!114 &1355889907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1355889902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d67a9860d624eeb449bcc88125880fdd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Common.Spinner
-  axis: {x: 0, y: 1, z: 0}
-  degreesPerSecond: -720
-  space: 1
---- !u!114 &1355889908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1355889903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d67a9860d624eeb449bcc88125880fdd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Common.Spinner
-  axis: {x: 0, y: 1, z: 0}
-  degreesPerSecond: 720
-  space: 1
---- !u!114 &1355889909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1355889904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a509cb947449c7243a75c27d81a80b15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transforms.DroneMover
-  moveSpeed: 3
-  verticalSpeed: 2
-  yawSpeed: 90
-  space: 1
-  statusText: {fileID: 0}
---- !u!114 &1355889910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1355889904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c586aa011202c654cbc165c5fd2dae47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Common.DirectionGizmo
-  length: 1.5
-  onlyWhenSelected: 0
 --- !u!1 &1665573019
 GameObject:
   m_ObjectHideFlags: 0

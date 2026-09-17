@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4374964154133363862}
+  - component: {fileID: 6130079714349709370}
+  - component: {fileID: 4131539673834026753}
   m_Layer: 0
   m_Name: Propeller BL
   m_TagString: Untagged
@@ -33,6 +35,34 @@ Transform:
   - {fileID: 2225604164944136223}
   m_Father: {fileID: 869613691892646929}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6130079714349709370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451719103518016513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e18dfa852724ded82ef7b8c99cd699d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transform.Spinner
+  axis: {x: 0, y: 0, z: 1}
+  degreesPerSecond: 1080
+  space: 0
+--- !u!114 &4131539673834026753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451719103518016513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1902320edde44769bb9a6ded6bd7257e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transform.DirectionGizmo
+  length: 0.3
 --- !u!1 &455491446537280055
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,6 +72,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3479488022285278173}
+  - component: {fileID: 3156506740383156349}
+  - component: {fileID: 9073017232217841581}
   m_Layer: 0
   m_Name: Propeller FR
   m_TagString: Untagged
@@ -66,6 +98,34 @@ Transform:
   - {fileID: 8444434343097968125}
   m_Father: {fileID: 869613691892646929}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3156506740383156349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455491446537280055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e18dfa852724ded82ef7b8c99cd699d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transform.Spinner
+  axis: {x: 0, y: 0, z: 1}
+  degreesPerSecond: 1080
+  space: 0
+--- !u!114 &9073017232217841581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455491446537280055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1902320edde44769bb9a6ded6bd7257e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transform.DirectionGizmo
+  length: 0.3
 --- !u!1 &1292902296665845350
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,6 +247,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5955673390780457206}
+  - component: {fileID: 5495358077946280724}
+  - component: {fileID: 7870655461634914984}
   m_Layer: 0
   m_Name: Propeller BR
   m_TagString: Untagged
@@ -211,6 +273,34 @@ Transform:
   - {fileID: 5091695420891265353}
   m_Father: {fileID: 869613691892646929}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5495358077946280724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489535265155942448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e18dfa852724ded82ef7b8c99cd699d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transform.Spinner
+  axis: {x: 0, y: 0, z: 1}
+  degreesPerSecond: 1080
+  space: 0
+--- !u!114 &7870655461634914984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489535265155942448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1902320edde44769bb9a6ded6bd7257e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transform.DirectionGizmo
+  length: 0.3
 --- !u!1 &2610432363339466843
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,6 +760,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8201882373260203751}
+  - component: {fileID: 7674959177587765211}
+  - component: {fileID: 440954739572900115}
   m_Layer: 0
   m_Name: Propeller FL
   m_TagString: Untagged
@@ -694,6 +786,34 @@ Transform:
   - {fileID: 8170803290299274755}
   m_Father: {fileID: 869613691892646929}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7674959177587765211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4918602258308563291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e18dfa852724ded82ef7b8c99cd699d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transform.Spinner
+  axis: {x: 0, y: 0, z: 1}
+  degreesPerSecond: 1080
+  space: 0
+--- !u!114 &440954739572900115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4918602258308563291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1902320edde44769bb9a6ded6bd7257e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transform.DirectionGizmo
+  length: 0.3
 --- !u!1 &5122704430291271358
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,6 +937,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 869613691892646929}
+  - component: {fileID: 4228609578247145457}
+  - component: {fileID: 4462438104589866673}
   m_Layer: 0
   m_Name: Drone
   m_TagString: Untagged
@@ -847,6 +969,35 @@ Transform:
   - {fileID: 5955673390780457206}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4228609578247145457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5616578435940858360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af072f9794816db4cadda5a762dd407c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transform.DroneMover
+  moveSpeed: 3
+  verticalSpeed: 2
+  yawSpeed: 90
+  space: 0
+--- !u!114 &4462438104589866673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5616578435940858360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1902320edde44769bb9a6ded6bd7257e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transform.DirectionGizmo
+  length: 1
 --- !u!1 &6351192637438402341
 GameObject:
   m_ObjectHideFlags: 0

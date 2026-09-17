@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 
-namespace Study3D.Transform
+namespace Study3D.Transforms
 {
     // 키보드로 드론을 이동, 회전 하고 기준 공간을 바꿔서 움직일 수 있는 컴포넌트
     // - Trnaslate

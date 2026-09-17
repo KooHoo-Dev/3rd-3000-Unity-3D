@@ -605,7 +605,7 @@ GameObject:
   - component: {fileID: 449089239}
   - component: {fileID: 449089238}
   - component: {fileID: 449089237}
-  - component: {fileID: 449089236}
+  - component: {fileID: 449089240}
   m_Layer: 0
   m_Name: Spinning Box
   m_TagString: Untagged
@@ -628,21 +628,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1865780007}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &449089236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 449089234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d67a9860d624eeb449bcc88125880fdd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Common.Spinner
-  axis: {x: 0, y: 0, z: 1}
-  degreesPerSecond: 45
-  space: 1
 --- !u!23 &449089237
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -721,6 +706,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 449089234}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &449089240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449089234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e18dfa852724ded82ef7b8c99cd699d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transforms.Spinner
+  axis: {x: 0, y: 0, z: 1}
+  degreesPerSecond: 45
+  space: 1
 --- !u!1 &502638315
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,7 +765,7 @@ GameObject:
   - component: {fileID: 507102173}
   - component: {fileID: 507102172}
   - component: {fileID: 507102171}
-  - component: {fileID: 507102170}
+  - component: {fileID: 507102174}
   m_Layer: 0
   m_Name: Balloon
   m_TagString: Untagged
@@ -789,22 +789,6 @@ Transform:
   - {fileID: 1978120493}
   m_Father: {fileID: 1223317495}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &507102170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 507102168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2355dc50f46f3bb4382a18a3c0e95903, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transforms.ScalePulse
-  amplitude: 0.2
-  pulsesPerSecond: 0.5
-  label: {fileID: 1159044509}
-  watchChild: {fileID: 1978120493}
 --- !u!23 &507102171
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -883,6 +867,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 507102168}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &507102174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507102168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8cd066d09414e27bbc5bc9e58554284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transforms.ScalePulse
+  amplitude: 0.2
+  pulsePerSecond: 0.5
 --- !u!1 &561701429
 GameObject:
   m_ObjectHideFlags: 0
@@ -1192,9 +1190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67a9860d624eeb449bcc88125880fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.Common.Spinner
-  axis: {x: 0, y: 1, z: 0}
-  degreesPerSecond: 720
-  space: 1
 --- !u!114 &644095966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1207,9 +1202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67a9860d624eeb449bcc88125880fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.Common.Spinner
-  axis: {x: 0, y: 1, z: 0}
-  degreesPerSecond: -720
-  space: 1
 --- !u!114 &644095967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1222,9 +1214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67a9860d624eeb449bcc88125880fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.Common.Spinner
-  axis: {x: 0, y: 1, z: 0}
-  degreesPerSecond: -720
-  space: 1
 --- !u!114 &644095968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1237,9 +1226,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67a9860d624eeb449bcc88125880fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.Common.Spinner
-  axis: {x: 0, y: 1, z: 0}
-  degreesPerSecond: 720
-  space: 1
 --- !u!114 &644095969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1252,11 +1238,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a509cb947449c7243a75c27d81a80b15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transforms.DroneMover
-  moveSpeed: 3
-  verticalSpeed: 2
-  yawSpeed: 90
-  space: 1
-  statusText: {fileID: 0}
 --- !u!1 &745526770
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,13 +1314,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 747232416}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e8930b28ba9f1f4b8e47910c8a2a855, type: 3}
+  m_Script: {fileID: 11500000, guid: 398d57b3890a4f78b228fff2d20c3405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transforms.ParentSwitcher
   target: {fileID: 205473392}
   parentA: {fileID: 1315011651}
   parentB: {fileID: 644095959}
-  statusText: {fileID: 0}
 --- !u!1 &929826760
 GameObject:
   m_ObjectHideFlags: 0
@@ -2414,7 +2394,7 @@ GameObject:
   - component: {fileID: 1707611596}
   - component: {fileID: 1707611595}
   - component: {fileID: 1707611594}
-  - component: {fileID: 1707611593}
+  - component: {fileID: 1707611597}
   m_Layer: 0
   m_Name: Spinning Cube
   m_TagString: Untagged
@@ -2437,21 +2417,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 502638316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1707611593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1707611591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d67a9860d624eeb449bcc88125880fdd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Common.Spinner
-  axis: {x: 0, y: 0, z: 1}
-  degreesPerSecond: 45
-  space: 1
 --- !u!23 &1707611594
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2530,6 +2495,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1707611591}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1707611597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707611591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e18dfa852724ded82ef7b8c99cd699d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Transforms.Spinner
+  axis: {x: 0, y: 0, z: 1}
+  degreesPerSecond: 45
+  space: 1
 --- !u!1 &1771835887
 GameObject:
   m_ObjectHideFlags: 0
