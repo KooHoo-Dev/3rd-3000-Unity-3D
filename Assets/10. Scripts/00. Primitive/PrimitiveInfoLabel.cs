@@ -36,9 +36,5 @@ namespace Study3D.Primitive
             
             label.SetText(infoText);
         }
-
-        private void Update()
-        {
-        }
     }
 }
