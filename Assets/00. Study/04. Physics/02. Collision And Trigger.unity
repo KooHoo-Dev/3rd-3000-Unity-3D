@@ -242,11 +242,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4198215}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 885a4a98d868474195831cb5ab7b3ba7, type: 3}
+  m_Script: {fileID: 11500000, guid: bbde848bbda56e8489cf4e5633bc13f5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study3D.ThreeDPhysics.BumperFeedback
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.ThreeDPhysics.BumperFeedbackGeminiVersion
   minImpulse: 0.5
-  pulseScale: 1.15
+  maxExpectedImpulse: 20
+  minPulseScale: 1.5
+  maxPulseScale: 3
   pulseDuration: 0.2
 --- !u!1 &22474804
 GameObject:
@@ -1224,7 +1226,7 @@ GameObject:
   - component: {fileID: 1346355813}
   - component: {fileID: 1346355812}
   - component: {fileID: 1346355811}
-  - component: {fileID: 1346355814}
+  - component: {fileID: 1346355815}
   m_Layer: 0
   m_Name: Bumper Mid
   m_TagString: Untagged
@@ -1326,7 +1328,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1346355808}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1346355814
+--- !u!114 &1346355815
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1335,11 +1337,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1346355808}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 885a4a98d868474195831cb5ab7b3ba7, type: 3}
+  m_Script: {fileID: 11500000, guid: bbde848bbda56e8489cf4e5633bc13f5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study3D.ThreeDPhysics.BumperFeedback
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.ThreeDPhysics.BumperFeedbackGeminiVersion
   minImpulse: 0.5
-  pulseScale: 1.15
+  maxExpectedImpulse: 20
+  minPulseScale: 1.5
+  maxPulseScale: 3
   pulseDuration: 0.2
 --- !u!1 &1382133976
 GameObject:
@@ -1755,7 +1759,7 @@ GameObject:
   - component: {fileID: 1962072209}
   - component: {fileID: 1962072208}
   - component: {fileID: 1962072207}
-  - component: {fileID: 1962072210}
+  - component: {fileID: 1962072211}
   m_Layer: 0
   m_Name: Bumper High
   m_TagString: Untagged
@@ -1857,7 +1861,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1962072204}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1962072210
+--- !u!114 &1962072211
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1866,11 +1870,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1962072204}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 885a4a98d868474195831cb5ab7b3ba7, type: 3}
+  m_Script: {fileID: 11500000, guid: bbde848bbda56e8489cf4e5633bc13f5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study3D.ThreeDPhysics.BumperFeedback
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.ThreeDPhysics.BumperFeedbackGeminiVersion
   minImpulse: 0.5
-  pulseScale: 1.15
+  maxExpectedImpulse: 20
+  minPulseScale: 1.5
+  maxPulseScale: 3
   pulseDuration: 0.2
 --- !u!1 &2068775785
 GameObject:
