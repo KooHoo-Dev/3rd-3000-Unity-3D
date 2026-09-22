@@ -32,6 +32,8 @@ namespace Study3D.ThreeDPhysics
         private void Awake()
         {
             body = GetComponent<Rigidbody>();
+            
+            
         }
 
         private void Update()
