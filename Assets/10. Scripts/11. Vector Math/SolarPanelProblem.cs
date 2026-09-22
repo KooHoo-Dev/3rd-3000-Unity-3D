@@ -21,9 +21,7 @@ namespace Study3D.VectorMath
         // 지금은 받은 값을 그대로 돌려줍니다. 그래서 해를 등진 패널이 발전합니다.
         public override Vector3 DirectionToSun(Vector3 lightForward)
         {
-            
-            
-            return lightForward;
+            return -lightForward;
         }
 
         // TODO 2 — 패널이 해를 얼마나 정면으로 받는가 (0 ~ 1)
@@ -33,16 +31,9 @@ namespace Study3D.VectorMath
         // 힌트 2 : 해가 패널 뒤에 있을 때 발전량이 음수가 되면 안 됩니다.
         public override float Sunlight(Vector3 panelNormal, Vector3 toSun)
         {
-            float dot = Vector3.Dot(panelNormal, toSun);
-
-            if (Mathf.Approximately(dot, 1.0f))
-                return 0f; 
-            if (Mathf.Approximately(dot, -1.0f))
-                return 1f;
-            if (Mathf.Approximately(dot, 0.0f))
-                return 0.5f;
+            float dot = Vector3.Dot(panelNormal.normalized, toSun.normalized);
             
-            return -dot;
+            return dot < 0.0f ? 0.0f : dot;
         }
 
         // TODO 3 — 후보 방향 중 해와 가장 닮은 방향의 번호
@@ -50,7 +41,21 @@ namespace Study3D.VectorMath
         // 힌트 : 모든 후보가 해를 등지고 있어도(내적이 전부 음수) 그중 가장 큰 것을 골라야 합니다.
         public override int BestDirection(Vector3[] candidates, Vector3 toSun)
         {
-            return 0;
+            int bestIndex = 0;
+            float prevDot = -1.1f;
+            
+            for (int i = 0; i < candidates.Length; i++)
+            {
+                float currentDot = Vector3.Dot(candidates[i], toSun);
+
+                if (currentDot > prevDot)
+                {
+                    bestIndex = i;
+                    prevDot = currentDot;
+                }
+            }
+            
+            return bestIndex;
         }
     }
 }

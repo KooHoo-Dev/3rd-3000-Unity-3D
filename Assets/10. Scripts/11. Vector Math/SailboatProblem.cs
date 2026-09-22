@@ -22,7 +22,7 @@ namespace Study3D.VectorMath
         // 힌트 : 결과에 바람 세기가 그대로 남아야 합니다. 어느 쪽 벡터만 길이 1로 맞춰야 할까요?
         public override float WindOnSail(Vector3 wind, Vector3 sailNormal)
         {
-            return 0f;
+            return Vector3.Dot(wind, sailNormal.normalized);
         }
 
         // TODO 2 — 돛이 받은 힘 중 배를 앞으로 미는 몫
@@ -30,7 +30,7 @@ namespace Study3D.VectorMath
         // 지금은 0 을 돌려줍니다.
         public override float DriveAlongKeel(Vector3 sailForce, Vector3 boatForward)
         {
-            return 0f;
+            return Vector3.Dot(sailForce, boatForward.normalized);
         }
 
         // TODO 3 — 맞바람 구역인가
@@ -40,7 +40,11 @@ namespace Study3D.VectorMath
         // 힌트 2 : 각도(도)를 내적과 비교하려면 무엇으로 바꿔야 하나요? 부등호 방향도 확인하세요.
         public override bool IsInNoGoZone(Vector3 boatForward, Vector3 wind, float noGoHalfAngle)
         {
-            return false;
+            // 2. 두 단위 벡터의 내적 계산 (내적값 = cos(두 방향 사이의 각도))
+            float dot = Vector3.Dot(boatForward.normalized, -wind.normalized);
+
+            // 4. 각도가 작을수록 내적값이 크므로, 내적값이 코사인 임계값 이상이면 맞바람 구역 안쪽
+            return dot >= Mathf.Cos(noGoHalfAngle);
         }
     }
 }
