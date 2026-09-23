@@ -10,7 +10,7 @@ namespace Study3D.ThreeDPhysics
 
         private Material material;
 
-        private bool isInside;
+        private bool isInside = false;
 
         private void Awake()
         {

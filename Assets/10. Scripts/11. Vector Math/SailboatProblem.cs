@@ -41,10 +41,11 @@ namespace Study3D.VectorMath
         public override bool IsInNoGoZone(Vector3 boatForward, Vector3 wind, float noGoHalfAngle)
         {
             // 2. 두 단위 벡터의 내적 계산 (내적값 = cos(두 방향 사이의 각도))
+            // 맞바람 판정 앵글을 코사인값으로 전환
             float dot = Vector3.Dot(boatForward.normalized, -wind.normalized);
 
             // 4. 각도가 작을수록 내적값이 크므로, 내적값이 코사인 임계값 이상이면 맞바람 구역 안쪽
-            return dot >= Mathf.Cos(noGoHalfAngle);
+            return dot >= Mathf.Cos(noGoHalfAngle * Mathf.Rad2Deg);
         }
     }
 }

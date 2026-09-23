@@ -31,9 +31,12 @@ namespace Study3D.VectorMath
         // 힌트 2 : 해가 패널 뒤에 있을 때 발전량이 음수가 되면 안 됩니다.
         public override float Sunlight(Vector3 panelNormal, Vector3 toSun)
         {
-            float dot = Vector3.Dot(panelNormal.normalized, toSun.normalized);
-            
-            return dot < 0.0f ? 0.0f : dot;
+            // 내적을 InnerProduct라고 부르는데
+            // 각 벡터의 단위 길이가 1인 내적을 DotProduct라고 부른다
+            float dotProduct = Vector3.Dot(panelNormal.normalized, toSun.normalized);
+
+            return Mathf.Max(0f, dotProduct);
+            // return dotProduct < 0.0f ? 0.0f : dotProduct;
         }
 
         // TODO 3 — 후보 방향 중 해와 가장 닮은 방향의 번호
@@ -42,7 +45,8 @@ namespace Study3D.VectorMath
         public override int BestDirection(Vector3[] candidates, Vector3 toSun)
         {
             int bestIndex = 0;
-            float prevDot = -1.1f;
+            float prevDot = float.MinValue;
+            // float prevDot = -1.1f;
             
             for (int i = 0; i < candidates.Length; i++)
             {
