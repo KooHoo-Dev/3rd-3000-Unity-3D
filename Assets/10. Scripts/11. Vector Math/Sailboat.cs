@@ -91,6 +91,14 @@ namespace Study3D.VectorMath
             Vector3 sailNormal = sailPivot.forward;
             Vector3 w = wind.Wind;
 
+            Rigidbody body = null;
+            body.angularVelocity = Vector3.one;
+
+            Debug.Log($"angularVelocity : " +
+                      $"x의 각도 : {body.angularVelocity.x * Mathf.Rad2Deg}"
+                      + $"y의 각도 : {body.angularVelocity.y * Mathf.Rad2Deg}");
+                      
+
             bool noGo = lab.IsInNoGoZone(forward, w, noGoHalfAngle);
 
             float windOnSail = Safe(lab.WindOnSail(w, sailNormal));
