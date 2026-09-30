@@ -788,8 +788,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dcf5fba16de473990612563ffdd1540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.GolfBall
-  stopSpeed: 1
-  stopDelay: 0
+  stopSpeed: 0.1
+  stopDelay: 0.3
   maxAngularSpeed: 150
 --- !u!1 &293306809
 GameObject:
@@ -835,10 +835,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e41b0d4709ed42f296ef3b119c372f61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.GolfPlayer
-  minPower: 0
+  minPower: 10
   maxPower: 0
-  cycleTime: 0
-  ball: {fileID: 0}
+  cycleTime: 0.5
+  ball: {fileID: 148657972}
 --- !u!1 &310872762
 GameObject:
   m_ObjectHideFlags: 0
