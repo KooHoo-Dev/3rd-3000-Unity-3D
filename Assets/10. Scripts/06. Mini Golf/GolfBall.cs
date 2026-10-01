@@ -14,8 +14,8 @@ namespace Study3D.MiniGolf
         // 공을 다이나믹으로 사용하기 때문에
         // 게임적인 표현을 회전 스피드에 제한을 활용하여 간접적으로 제어 한다
         public float maxAngularSpeed = 150f;
+        public Rigidbody rBody;
 
-        private Rigidbody rBody;
         private Vector3 lastPosition; // 유저가 마지막으로 공을 건드린 위치
         private Vector3 shotVelocity; // 공의 방향 X 세기가 연산되는 변수
         private bool shotRequested;
