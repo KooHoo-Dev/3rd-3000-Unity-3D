@@ -45,5 +45,35 @@ namespace Study3D.MiniGolf
             shotVelocity = direction * power;
             lastPosition = transform.position;
         }
+
+        // 공을 position의 위치로 옮기고
+        // 다시 shoot을 할 수 있는 상태로 바꿔 줍니다.
+        private void Teleport(Vector3 position)
+        {
+            shotRequested = false;
+            // 리지드 바디의 운동량(선 운동량, 각 운동량)을 0으로 바꿔줍니다.
+            rBody.linearVelocity = Vector3.zero;
+            rBody.angularVelocity = Vector3.zero;
+            
+            // 공을 물리를 처리하는 개체이므로
+            // transform과 리지드 바디의 position을 모두 변경해줍니다.
+            // (Interpolate를 사용하는 Rigidbody는 transform도 함께 옮겨야
+            // 끌려오듯이 안보일 거입니다.)
+            rBody.position = position;
+            transform.position = position;
+        }
+
+        // public으로 선언해서 외부에서 호출 할 수 있도록 해줍니다.
+        public void ReturnToLasShotPosition()
+        {
+            Teleport(lastPosition);
+        }
+
+        // 스테이지 시작시 공을 놓기 위한 함수
+        public void PlaceAt(Vector3 position)
+        {
+            lastPosition = position;
+            Teleport(position);
+        }
     }
 }

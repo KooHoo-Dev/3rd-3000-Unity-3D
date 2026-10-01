@@ -861,8 +861,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.GolfPlayer
   minPower: 0
-  maxPower: 0
-  cycleTime: 0
+  maxPower: 10
+  cycleTime: 1
   ball: {fileID: 148657972}
 --- !u!1 &310872762
 GameObject:
