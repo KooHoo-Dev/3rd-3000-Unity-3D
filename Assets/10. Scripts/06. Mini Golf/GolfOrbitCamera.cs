@@ -24,6 +24,7 @@ namespace Study3D.MiniGolf
 
         private void Update()
         {
+            // 마우스 휠의 이번 프레임 이동량을 가져옵니다.
             float scroll = SimpleInput.GetMouseScrollDeltaRaw();
             float zoomValue = plainCamera.Radius - scroll * zoomStep;
             plainCamera.Radius = Mathf.Clamp(zoomValue, minRadius, maxRadius) ;
