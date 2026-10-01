@@ -20,6 +20,8 @@ namespace Study3D.MiniGolf
         private bool shotRequested;
         private float slowTime;
 
+        public bool IsStopped => (shotRequested == false) && slowTime >= stopDelay;
+        
         private void Awake()
         {
             rBody = GetComponent<Rigidbody>();
@@ -36,6 +38,11 @@ namespace Study3D.MiniGolf
                 rBody.AddForce(shotVelocity, ForceMode.VelocityChange);
                 return;
             }
+
+            if (rBody.linearVelocity.magnitude < stopSpeed)
+                slowTime += Time.fixedDeltaTime;
+            else
+                slowTime = 0;
         }
 
         // 외부에서 Shoot함수를 호출하여 동작하도록 함수를 public으로 선언합니다
