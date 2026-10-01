@@ -110,7 +110,8 @@ namespace Study3D.Terrains
             float normalizedZ = Mathf.InverseLerp(0f, size.z, worldPosition.z);
 
             // GetInterpolatedNormal ?
-            // : 
+            // : 정규화된 2차원 좌표(0~1, 0~1)를 이용해서 해당 터레인의 좌표 지점의
+            //   노말값을 반환합니다.
             return terrainData.GetInterpolatedNormal(normalizedX, normalizedZ);
         }
     }
