@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 57deca5065314b40b4d9972974e58de3
+timeCreated: 1739737610
+AssetOrigin:
+  serializedVersion: 1
+  productId: 310310
+  packageName: Paper Plane Controller
+  packageVersion: 1.0.5
+  assetPath: Assets/RageRun Games/Easy Paper Plane Controller/Scripts/InputHandler/KeyboardInputHandler.cs
+  uploadId: 742778

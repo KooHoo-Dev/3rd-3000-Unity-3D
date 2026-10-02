@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b3e9bacaa23f4b9479dc1058c6428e03
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 13400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 310310
+  packageName: Paper Plane Controller
+  packageVersion: 1.0.5
+  assetPath: Assets/RageRun Games/Easy Paper Plane Controller/Materials/Demo Mat/Frictionless.physicMaterial
+  uploadId: 742778
