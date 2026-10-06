@@ -160,8 +160,9 @@ namespace Study.Utilities
         {
             Vector2 axis = new Vector2();
             axis.x = GetAxisHorizontalRaw();
+            //axis.y = GetAxisVerticalRaw();
             axis.y = GetAxisVerticalRaw();
-
+            
             if (axis.sqrMagnitude > 1f) return axis.normalized;
             return axis;
         }

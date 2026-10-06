@@ -29,12 +29,12 @@ namespace Study3D.AirPlaneGame
             UpdateModelVisual();
         }
 
-        private void FixedUpdate()
-        {
-            if (rBody.useGravity) return;
-            UpdateRotation();
-            UpdateVelocity();
-        }
+        // private void FixedUpdate()
+        // {
+        //     if (rBody.useGravity) return;
+        //     UpdateRotation();
+        //     UpdateVelocity();
+        // }
         
         #endregion
         
@@ -77,14 +77,99 @@ namespace Study3D.AirPlaneGame
             transform.rotation = transform.rotation * pitchRotation * yawRotation;
         }
 
+        // 선속도를 기반으로 비행기의 이동을 결정합니다. 
         private void UpdateVelocity()
         {
+            // UpdateRotation에서 수정된 transform.forward를 사용해서 선속도 벡터를 만들어 줍니다.
+            Vector3 applyVelocity = transform.forward * (moveSpeed * Time.deltaTime);
+            // rigidBody의 선속도에 대입해줍니다.
+            //rBody.AddForce(applyVelocity, ForceMode.VelocityChange);
+            rBody.linearVelocity = applyVelocity;
             
+            // 플레이어가 조종하는(?) 녀석은 AddForce 함수를 이용하는것보다
+            // 그냥 대입하는게 자연스러움.
+            // ( 왜냐면 player && isKinematic(true) 인 개체는 물리엔진의 처리에서 벗어나 있는게...
+            // 쉬울것 같은데?)
         }
 
+        //---------------------
+        
+        [Header("Model Settings")]
+        [SerializeField] private Transform modelTransform;
+        [SerializeField] private float maxRollAngle = 60f;
+        [SerializeField] [Range(0f, 1f)] private float rollSpeedDamping = 1.0f;
+
+        // 날개 처리는 BoneFlap.cs 에 더 쉬운버전으로 있습니다.
+        [Header("Wing Settings")] 
+        [SerializeField] private Transform leftWingTransform;
+        [SerializeField] private Transform rightWingTransform;
+        [SerializeField] private float maxWingAngle = 60.0f;
+        [SerializeField] [Range(0f, 1f)] private float wingRotationDamping = 0.1f;
+        
+        // 비행기 모델의 비주얼적인 처리를 한곳에 모아서 연산해 줍니다.
         private void UpdateModelVisual()
         {
+            // 비행기의 Roll처리와 날개 애니메이션을 만들어 봅시다.
+            // 1. 몸체의 Roll 회전 적용
+            // - 왼쪽입력을 할경우 : maxRollAngle,
+            // - 오른쪽 입력의 경우 : -maxRollAngle
+            // - 입력 없을 경우 : 0.0f;
             
+            // 입력을 판정해서 이번 실행동안 목표 maxRollAngle을 구해줍니다.
+            float targetAngle = 0.0f;
+            if (inputAxis.x < 0) targetAngle = maxRollAngle;
+            else if (inputAxis.x > 0) targetAngle = -maxRollAngle;
+            
+            // targetAngle을 적용한 목표 roll 회전량을 생성해준다
+            Vector3 currentModelLocalEuler = modelTransform.localEulerAngles;
+            currentModelLocalEuler.z = targetAngle;
+            Quaternion targetRollRotation = Quaternion.Euler(currentModelLocalEuler);
+            
+            Quaternion applyRoll = Quaternion.Lerp(
+                    modelTransform.localRotation, 
+                    targetRollRotation, 
+                    rollSpeedDamping);
+
+            modelTransform.localRotation = applyRoll;
+            
+            // 2. 날개 애니메이션 처리
+            if (inputAxis.x <= 0 || inputAxis.y < 0)
+            {
+                leftWingTransform.localRotation =
+                    CalculateWingRotation(leftWingTransform, true);
+            }
+
+            if (inputAxis.x >= 0 || inputAxis.y < 0)
+            {
+                rightWingTransform.localRotation =
+                    CalculateWingRotation(rightWingTransform, false);
+            }
+
+            return;
+            
+            // 왼쪽 날개나 오른쪽 날개나 처리는 동일하기 때문에
+            // 함수를 선언하여 처리해줍니다.
+            Quaternion CalculateWingRotation(Transform wingTransform, bool isLeft)
+            {
+                // 입력이 있으면 wingTargetAngle에 maxWingAngle을 대입해준다.
+                float wingTargetAngle =
+                    (Mathf.Abs(inputAxis.x) > 0 || Mathf.Abs(inputAxis.y) > 0) ? maxWingAngle : 0.0f;
+                
+                Quaternion currentRotation = wingTransform.localRotation;
+
+                Quaternion targetRotation = Quaternion.Euler(
+                    currentRotation.eulerAngles.x,
+                    isLeft ? wingTargetAngle : -wingTargetAngle,
+                    currentRotation.eulerAngles.z);
+
+                currentRotation = Quaternion.Lerp(
+                    currentRotation, // 현재 날개의 회전량(로테이션)에
+                    targetRotation,  // 목표 회전량(로테이션) 까지
+                    wingRotationDamping // damping값의 속도로 보간
+                );
+                return currentRotation;
+            }
+
         }
         
         #endregion
