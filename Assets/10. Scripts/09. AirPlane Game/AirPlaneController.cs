@@ -29,12 +29,12 @@ namespace Study3D.AirPlaneGame
             UpdateModelVisual();
         }
 
-        // private void FixedUpdate()
-        // {
-        //     if (rBody.useGravity) return;
-        //     UpdateRotation();
-        //     UpdateVelocity();
-        // }
+        private void FixedUpdate()
+        {
+            if (rBody.useGravity) return;
+            UpdateRotation();
+            UpdateVelocity();
+        }
         
         #endregion
         
@@ -72,7 +72,8 @@ namespace Study3D.AirPlaneGame
             float pAngle = inputAxis.y * pitchAngle * pitchSpeed * Time.deltaTime;
             float yAngle = inputAxis.x * yawAngle * yawSpeed * Time.deltaTime;
             Quaternion pitchRotation = Quaternion.AngleAxis(pAngle, transform.right);
-            Quaternion yawRotation = Quaternion.AngleAxis(yAngle, Vector3.up);
+            //Quaternion yawRotation = Quaternion.AngleAxis(yAngle, Vector3.up);
+            Quaternion yawRotation = Quaternion.AngleAxis(yAngle, transform.up);
             
             transform.rotation = transform.rotation * pitchRotation * yawRotation;
         }
