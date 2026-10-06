@@ -160,7 +160,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 93191851}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e813abd0a31b4a7b939d2921948d51bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ad9cc0219ea4dc3916254f0d43feaba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.AirPlaneGame.AirPlaneGameManager
 --- !u!1 &224360125
