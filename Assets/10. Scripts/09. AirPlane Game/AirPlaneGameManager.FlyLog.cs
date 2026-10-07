@@ -19,7 +19,6 @@ namespace Study3D.AirPlaneGame
         
         private void InitFlyLog()
         {
-            Debug.Log("InitFlyLog");
             LoopRecord().Forget();
         }
 
@@ -44,6 +43,11 @@ namespace Study3D.AirPlaneGame
                     Debug.Log(log.WorldPosition);
                 }
             }
+        }
+
+        private FlyLog GetFlyLog()
+        {
+            return flyLogQueue.Dequeue();
         }
     }
 }

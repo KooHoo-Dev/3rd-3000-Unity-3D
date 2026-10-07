@@ -180,6 +180,21 @@ namespace Study3D.AirPlaneGame
         }
         
         #endregion
+
+
+        public void Respawn(Vector3 position, Quaternion rotation)
+        {
+            transform.position = position;
+            transform.rotation = rotation;
+
+            rBody.linearVelocity = Vector3.zero;
+            rBody.angularVelocity = Vector3.zero;
+        }
+
+        public void Dead()
+        {
+            rBody.useGravity = true;
+        }
     }
 
 }
