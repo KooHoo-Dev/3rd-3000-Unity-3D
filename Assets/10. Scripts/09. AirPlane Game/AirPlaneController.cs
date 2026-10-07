@@ -71,8 +71,8 @@ namespace Study3D.AirPlaneGame
             // 아래처럼 Rotate를 사용해도 될것 같습니다.
             // Vector3 pAngle = new Vector3(inputAxis.y, 0, 0) * (pitchAngle * pitchSpeed * Time.deltaTime);
             // Vector3 yAngle = new Vector3(0, inputAxis.x, 0) * (yawAngle * yawSpeed * Time.deltaTime);
-            // transform.Rotate(pAngle, Space.Self);
-            // transform.Rotate(yAngle, Space.World);
+            //transform.Rotate(transform.right * pAngle, Space.Self);
+            //transform.Rotate(Vector3.up * yAngle, Space.World);
 
             // 로테이션은 계산 순서에 따라 다르게 적용 됩니다.
             transform.rotation = yawRotation * pitchRotation * transform.rotation;
