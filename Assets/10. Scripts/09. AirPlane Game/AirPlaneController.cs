@@ -66,8 +66,7 @@ namespace Study3D.AirPlaneGame
             float pAngle = inputAxis.y * pitchAngle * pitchSpeed * Time.deltaTime;
             float yAngle = inputAxis.x * yawAngle * yawSpeed * Time.deltaTime;
             Quaternion pitchRotation = Quaternion.AngleAxis(pAngle, transform.right);
-            //Quaternion yawRotation = Quaternion.AngleAxis(yAngle, Vector3.up);
-            Quaternion yawRotation = Quaternion.AngleAxis(yAngle, transform.up);
+            Quaternion yawRotation = Quaternion.AngleAxis(yAngle, Vector3.up);
             
             // 아래처럼 Rotate를 사용해도 될것 같습니다.
             // Vector3 pAngle = new Vector3(inputAxis.y, 0, 0) * (pitchAngle * pitchSpeed * Time.deltaTime);
@@ -76,7 +75,15 @@ namespace Study3D.AirPlaneGame
             // transform.Rotate(yAngle, Space.World);
 
             // 로테이션은 계산 순서에 따라 다르게 적용 됩니다.
-            transform.rotation = (pitchRotation * yawRotation) * transform.rotation;
+            transform.rotation = yawRotation * pitchRotation * transform.rotation;
+            // 로테이션은 우측에서 좌측으로 계산되어 적용된다고 생각하시면 됩니다.
+            // yawRotation : 월드 축(Vector3.up)을 기반으로 한 회전량
+            // pitchRotation : 내 로컬축(transform.right)을 기반으로 한 회전량
+            // transform.rotation : 내 현재 회전량
+            
+            // 오른쪽부터 나의 회전이 모두 끝나고 그 결과로 yawRotation을 적용해야 합니다.
+            // 모든것은 누적으로 반영되기 때문에 여러 곳에서 특정물체의 회전요청을 하면
+            // 이상한 회전이 나올 수도 있습니다.
         }
 
         // 선속도를 기반으로 비행기의 이동을 결정합니다. 

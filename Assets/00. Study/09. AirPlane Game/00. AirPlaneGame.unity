@@ -169,15 +169,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1237128705}
+    m_TransformParent: {fileID: 1638543953}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5649beaae4fbd704098f47dcaaa3679b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5649beaae4fbd704098f47dcaaa3679b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5649beaae4fbd704098f47dcaaa3679b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -189,15 +189,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5649beaae4fbd704098f47dcaaa3679b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5649beaae4fbd704098f47dcaaa3679b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5649beaae4fbd704098f47dcaaa3679b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5649beaae4fbd704098f47dcaaa3679b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -305,23 +305,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5649beaae4fbd704098f47dcaaa3679b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1638543953}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5649beaae4fbd704098f47dcaaa3679b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1695924353}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5649beaae4fbd704098f47dcaaa3679b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1695924354}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5649beaae4fbd704098f47dcaaa3679b, type: 3}
---- !u!4 &616133908 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -4509024502866047330, guid: 5649beaae4fbd704098f47dcaaa3679b, type: 3}
-  m_PrefabInstance: {fileID: 572750132}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &794174898
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,7 +465,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1695924352}
+  - {fileID: 1638543953}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1363943838 stripped
@@ -561,8 +547,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1638543953}
+  - component: {fileID: 1638543955}
+  - component: {fileID: 1638543954}
   m_Layer: 0
-  m_Name: AirPlane
+  m_Name: AirPlaneController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -577,53 +565,20 @@ Transform:
   m_GameObject: {fileID: 1638543952}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 30, y: 20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1695924352}
+  m_Children:
+  - {fileID: 1695924352}
+  m_Father: {fileID: 1237128705}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1695924351 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5649beaae4fbd704098f47dcaaa3679b, type: 3}
-  m_PrefabInstance: {fileID: 572750132}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1695924352 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5649beaae4fbd704098f47dcaaa3679b, type: 3}
-  m_PrefabInstance: {fileID: 572750132}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1695924353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1695924351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9669c9bda5a64ae4faaafbddf30c2e10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study3D.AirPlaneGame.AirPlaneController
-  pitchAngle: 2
-  yawAngle: 1
-  pitchSpeed: 60
-  yawSpeed: 40
-  moveSpeed: 90
-  modelTransform: {fileID: 616133908}
-  maxRollAngle: 60
-  rollSpeedDamping: 0.03
-  leftWingTransform: {fileID: 1363943838}
-  rightWingTransform: {fileID: 953340098}
-  maxWingAngle: 40
-  wingRotationDamping: 0.1
---- !u!54 &1695924354
+--- !u!54 &1638543954
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1695924351}
+  m_GameObject: {fileID: 1638543952}
   serializedVersion: 5
   m_Mass: 1
   m_LinearDamping: 0
@@ -644,6 +599,35 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1638543955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638543952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9669c9bda5a64ae4faaafbddf30c2e10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.AirPlaneGame.AirPlaneController
+  pitchAngle: 1
+  yawAngle: 1
+  pitchSpeed: 120
+  yawSpeed: 60
+  moveSpeed: 500
+  modelTransform: {fileID: 1695924352}
+  maxRollAngle: 60
+  rollSpeedDamping: 0.3
+  leftWingTransform: {fileID: 1363943838}
+  rightWingTransform: {fileID: 953340098}
+  maxWingAngle: 40
+  wingRotationDamping: 0.19
+--- !u!4 &1695924352 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5649beaae4fbd704098f47dcaaa3679b, type: 3}
+  m_PrefabInstance: {fileID: 572750132}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1701341654
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,18 +663,18 @@ MonoBehaviour:
     ScreenPosition: {x: 0, y: 0}
     DeadZone:
       Enabled: 1
-      Size: {x: 0.04, y: 0.08}
+      Size: {x: 0.05, y: 0.05}
     HardLimits:
       Enabled: 1
-      Size: {x: 0.76, y: 0.69}
+      Size: {x: 0.8, y: 0.8}
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
   TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 0.0002, y: 0.0002}
+  Damping: {x: 0.2, y: 0.2}
   Lookahead:
     Enabled: 1
-    Time: 0.012
-    Smoothing: 0.1
+    Time: 0.07
+    Smoothing: 2
     IgnoreY: 0
 --- !u!114 &1701341656
 MonoBehaviour:
@@ -705,10 +689,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineFollow
   TrackerSettings:
-    BindingMode: 2
-    PositionDamping: {x: 0.1, y: 0.05, z: 0.03}
-    AngularDampingMode: 0
-    RotationDamping: {x: 0.01, y: 0.03, z: 0.01}
+    BindingMode: 1
+    PositionDamping: {x: 1, y: 0.5, z: 0.3}
+    AngularDampingMode: 1
+    RotationDamping: {x: 1, y: 3, z: 1}
     QuaternionDamping: 1
   FollowOffset: {x: 0, y: 2.85, z: -4}
 --- !u!114 &1701341657
