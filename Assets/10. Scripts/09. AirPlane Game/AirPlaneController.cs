@@ -62,12 +62,6 @@ namespace Study3D.AirPlaneGame
         // 비행기 자체의 회전을 계산해줍니다. (pitch, yaw)
         private void UpdateRotation()
         {
-            // 아래처럼 Rotate를 사용해도 될것 같습니다.
-            // Vector3 pAngle = new Vector3(inputAxis.y, 0, 0) * (pitchAngle * pitchSpeed * Time.deltaTime);
-            // Vector3 yAngle = new Vector3(0, inputAxis.x, 0) * (yawAngle * yawSpeed * Time.deltaTime);
-            // transform.Rotate(pAngle, Space.Self);
-            // transform.Rotate(yAngle, Space.World);
-
             // pitch와 yaw 각각의 로테이션을 생성해줍니다.
             float pAngle = inputAxis.y * pitchAngle * pitchSpeed * Time.deltaTime;
             float yAngle = inputAxis.x * yawAngle * yawSpeed * Time.deltaTime;
@@ -75,14 +69,21 @@ namespace Study3D.AirPlaneGame
             //Quaternion yawRotation = Quaternion.AngleAxis(yAngle, Vector3.up);
             Quaternion yawRotation = Quaternion.AngleAxis(yAngle, transform.up);
             
-            transform.rotation = transform.rotation * pitchRotation * yawRotation;
+            // 아래처럼 Rotate를 사용해도 될것 같습니다.
+            // Vector3 pAngle = new Vector3(inputAxis.y, 0, 0) * (pitchAngle * pitchSpeed * Time.deltaTime);
+            // Vector3 yAngle = new Vector3(0, inputAxis.x, 0) * (yawAngle * yawSpeed * Time.deltaTime);
+            // transform.Rotate(pAngle, Space.Self);
+            // transform.Rotate(yAngle, Space.World);
+
+            // 로테이션은 계산 순서에 따라 다르게 적용 됩니다.
+            transform.rotation = (pitchRotation * yawRotation) * transform.rotation;
         }
 
         // 선속도를 기반으로 비행기의 이동을 결정합니다. 
         private void UpdateVelocity()
         {
             // UpdateRotation에서 수정된 transform.forward를 사용해서 선속도 벡터를 만들어 줍니다.
-            Vector3 applyVelocity = transform.forward * (moveSpeed * Time.deltaTime);
+            Vector3 applyVelocity = transform.forward * (moveSpeed * Time.fixedDeltaTime);
             // rigidBody의 선속도에 대입해줍니다.
             //rBody.AddForce(applyVelocity, ForceMode.VelocityChange);
             rBody.linearVelocity = applyVelocity;
@@ -122,9 +123,7 @@ namespace Study3D.AirPlaneGame
             else if (inputAxis.x > 0) targetAngle = -maxRollAngle;
             
             // targetAngle을 적용한 목표 roll 회전량을 생성해준다
-            Vector3 currentModelLocalEuler = modelTransform.localEulerAngles;
-            currentModelLocalEuler.z = targetAngle;
-            Quaternion targetRollRotation = Quaternion.Euler(currentModelLocalEuler);
+            Quaternion targetRollRotation = Quaternion.Euler(0f,0f, targetAngle);
             
             Quaternion applyRoll = Quaternion.Lerp(
                     modelTransform.localRotation, 

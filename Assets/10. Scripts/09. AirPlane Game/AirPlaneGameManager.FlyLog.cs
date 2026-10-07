@@ -13,6 +13,8 @@ namespace Study3D.AirPlaneGame
             public Quaternion WorldRotation;
         }
         
+        // List가 더 좋지 않을까?
+        // - 고스트 모드도 잘 맹글 수 있겠죠?
         private Queue<FlyLog> flyLogQueue = new Queue<FlyLog>();
         
         private void InitFlyLog()
@@ -26,20 +28,22 @@ namespace Study3D.AirPlaneGame
             while (gameObject.activeInHierarchy)
             {
                 await UniTask.WaitForSeconds(0.1f);          // 0.1초 기다렸다가
-                RecordFlyLog();                                     // 기록해준다
-                if (flyLogQueue.Count > 30) flyLogQueue.Dequeue();  // 30개를 초과하면 빼준다 
+                
+                // 기록해준다
+                FlyLog flyLog = new()
+                {
+                    WorldPosition = AirPlaneController.LocalAirPlane.transform.position,
+                    WorldRotation = AirPlaneController.LocalAirPlane.transform.rotation
+                };
+                
+                flyLogQueue.Enqueue(flyLog);
+                
+                if (flyLogQueue.Count > 30)
+                {
+                    var log = flyLogQueue.Dequeue(); // 30개를 초과하면 빼준다
+                    Debug.Log(log.WorldPosition);
+                }
             }
-        }
-
-        private void RecordFlyLog()
-        {
-            FlyLog flyLog = new()
-            {
-                WorldPosition = AirPlaneController.LocalAirPlane.transform.position,
-                WorldRotation = AirPlaneController.LocalAirPlane.transform.rotation
-            };
-            
-            flyLogQueue.Enqueue(flyLog);
         }
     }
 }
