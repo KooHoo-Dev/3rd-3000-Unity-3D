@@ -9,7 +9,7 @@ namespace Study3D.FpsGame.Player
 
         public bool Fire()
         {
-            return false;
+            return true;
         }
 
         public void RequestReload()
