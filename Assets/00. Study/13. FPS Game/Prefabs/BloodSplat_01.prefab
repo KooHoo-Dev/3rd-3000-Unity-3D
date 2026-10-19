@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3874218858663544647}
   - component: {fileID: 3919401788796348449}
   - component: {fileID: 1421252150583957698}
-  - component: {fileID: 1242622250073416188}
+  - component: {fileID: -4263775309868281336}
   m_Layer: 0
   m_Name: BloodSplat_01
   m_TagString: Untagged
@@ -4640,7 +4640,7 @@ ParticleSystem:
     vectorLabel1_3: W
 --- !u!199 &1421252150583957698
 ParticleSystemRenderer:
-  serializedVersion: 6
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4656,6 +4656,11 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4677,9 +4682,11 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -4711,8 +4718,7 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
-  m_MaskInteraction: 0
---- !u!114 &1242622250073416188
+--- !u!114 &-4263775309868281336
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4721,7 +4727,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 799160745383598638}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f45893e2d2cfc8946afb53a17a2eb2bc, type: 3}
+  m_Script: {fileID: 11500000, guid: dc0de3244cfc48bb91779ab02348dc50, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  particleSystem: {fileID: 3919401788796348449}
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.FpsGame.ParticleEffect
+  particle: {fileID: 3919401788796348449}

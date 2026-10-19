@@ -436,18 +436,6 @@ MonoBehaviour:
     localScale: {x: 0, y: 0, z: 0}
   muzzleFlash: {fileID: 1017407887}
   muzzleFlashDuration: 0.1
---- !u!114 &383061988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 383061983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c442ae90cf5c47a9b825672b3205d13e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study3D.FpsGame.Weapon.WeaponTester
 --- !u!1001 &389675718
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1063,6 +1051,37 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2109667174689528208, guid: d037ac6d8d7521a4f915aba72c0e23a1, type: 3}
   m_PrefabInstance: {fileID: 4280219658241528798}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &710615076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 710615077}
+  m_Layer: 0
+  m_Name: BloodEffectPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &710615077
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710615076}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1334675293}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &796458628
 GameObject:
   m_ObjectHideFlags: 0
@@ -2101,6 +2120,51 @@ MonoBehaviour:
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
+--- !u!1 &1191770388
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1191770389}
+  - component: {fileID: 1191770390}
+  m_Layer: 0
+  m_Name: EffectControllers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1191770389
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191770388}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1334675293}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1191770390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191770388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe2615d3644438daac53ce817a43d06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.FpsGame.Feedback.HitEffectController
+  bloodPoolKey: Blood
 --- !u!1 &1243381147
 GameObject:
   m_ObjectHideFlags: 0
@@ -2385,6 +2449,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1334675293}
+  - component: {fileID: 1334675294}
   m_Layer: 0
   m_Name: ObjectPoolManager
   m_TagString: Untagged
@@ -2404,9 +2469,28 @@ Transform:
   m_LocalPosition: {x: -1.9965274, y: 8.379961, z: 4.830515}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 710615077}
+  - {fileID: 1191770389}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1334675294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334675291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28815ed770d1e6a43bb8e82027bcddf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.FpsGame.ObjectPoolManager
+  objectPoolDatas:
+  - key: Blood
+    prefab: {fileID: 799160745383598638, guid: 7479e3ce797956649b098045eb0daf9d, type: 3}
+    expandSize: 30
+    parent: {fileID: 710615077}
 --- !u!1001 &1431351643
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3000,6 +3084,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1844179788}
+  - component: {fileID: 1844179789}
   m_Layer: 0
   m_Name: CombatSystem
   m_TagString: Untagged
@@ -3022,6 +3107,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1844179789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844179786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a7cb6ec5bd415441807bff11114add4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.FpsGame.CombatSystem
+  maxEventsPerFrame: 10
+  enemyLayerName: Enemy
 --- !u!143 &1850820560 stripped
 CharacterController:
   m_CorrespondingSourceObject: {fileID: 212235731742304699, guid: d037ac6d8d7521a4f915aba72c0e23a1, type: 3}
@@ -3412,9 +3511,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 586398656112793656, guid: d037ac6d8d7521a4f915aba72c0e23a1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 383061987}
-    - targetCorrespondingSourceObject: {fileID: 586398656112793656, guid: d037ac6d8d7521a4f915aba72c0e23a1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 383061988}
     - targetCorrespondingSourceObject: {fileID: 4100823366517415553, guid: d037ac6d8d7521a4f915aba72c0e23a1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2028935522}

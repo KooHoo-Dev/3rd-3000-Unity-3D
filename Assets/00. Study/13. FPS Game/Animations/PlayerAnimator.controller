@@ -168,10 +168,7 @@ MonoBehaviour:
     parameter: ReloadComplete_3
   - name: StartReload
     time: 0
-    parameter: StartReload!!!
-  - name: EndReload
-    time: 1
-    parameter: EndReload!!!
+    parameter: 
 --- !u!1102 &-3786012413141774382
 AnimatorState:
   serializedVersion: 6

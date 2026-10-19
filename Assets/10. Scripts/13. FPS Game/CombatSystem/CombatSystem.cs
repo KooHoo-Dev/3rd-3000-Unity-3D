@@ -52,7 +52,8 @@ namespace Study3D.FpsGame
                 var inGameEvent = inGameEventQueue.Dequeue();
                 processCount++;
 
-                if (inGameEvent.Receiver is UnityEngine.Object receiverObject && receiverObject == null) continue;
+                if (inGameEvent.Receiver is UnityEngine.Object receiverObject && 
+                    receiverObject == null) continue;
 
                 switch (inGameEvent.Type)
                 {

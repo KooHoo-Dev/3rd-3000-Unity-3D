@@ -56,9 +56,16 @@ namespace Study3D.FpsGame.Weapon
         {
             // Raycast 검사 결과가 false라면 종료
             if (Physics.Raycast(ray, out RaycastHit hit, Range) == false) return;
-            Debug.Log(hit.collider.gameObject.name);
-            
             Debug.DrawRay(ray.origin, ray.direction * Range, Color.red, 10f);
+
+            CombatEvent combatEvent = new CombatEvent();
+            combatEvent.Sender = Player.Player.LocalPlayer;
+            combatEvent.Receiver = Player.Player.LocalPlayer; // 나중에 몬스터로
+            combatEvent.Damage = 10;
+            combatEvent.HitPosition = hit.point;
+            combatEvent.Collider = hit.collider;
+            
+            CombatSystem.Instance.AddInGameEvent(combatEvent);
         }
 
         // 총구 화염을 제어하는 함수 입니다.
