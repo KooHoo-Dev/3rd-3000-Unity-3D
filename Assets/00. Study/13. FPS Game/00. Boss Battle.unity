@@ -306,6 +306,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 248811008}
   m_CullTransparentMesh: 1
+--- !u!4 &268643129 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5062831923148860240, guid: d037ac6d8d7521a4f915aba72c0e23a1, type: 3}
+  m_PrefabInstance: {fileID: 4280219658241528798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &288359115
 GameObject:
   m_ObjectHideFlags: 0
@@ -1663,6 +1668,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 987454837}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1016721661 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3537180872238151340, guid: d037ac6d8d7521a4f915aba72c0e23a1, type: 3}
+  m_PrefabInstance: {fileID: 4280219658241528798}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d5013f84bc96846ab2b7997218a7f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1017407887 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7636465219031802382, guid: d037ac6d8d7521a4f915aba72c0e23a1, type: 3}
@@ -3047,6 +3063,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49da487bd889435ab0498d8a25e1203e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.FpsGame.Weapon.WeaponController
+  assaultRifle: {fileID: 383061987}
+  grenadeLauncher: {fileID: 0}
+  shotgun: {fileID: 0}
+--- !u!114 &1850820565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902486571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f73e4ca28d324b4283db4dfc54fe587b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.FpsGame.Player.LocalPlayer
+  maxHp: 100
+  startWeapon: 1
+  weaponParent: {fileID: 268643129}
+  weaponWeaponController: {fileID: 1850820564}
+  reloadCompleteEvent: ReloadComplete
+  swapCompleteEvent: SwapComplete
+  characterController: {fileID: 1850820560}
+  animStateEventListener: {fileID: 1016721661}
 --- !u!1 &1869418546
 GameObject:
   m_ObjectHideFlags: 0
@@ -3170,15 +3209,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81e07eb1af5a4bc1a7e72f54ba6355a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.FpsGame.Weapon.Weapon
-  weaponName: 
-  fireRate: 0.05
-  damage: 10
-  totalAmmo: 30
-  range: 100
-  pivot:
-    localPosition: {x: 0, y: 0.08, z: 0.025}
-    localRotation: {x: 90, y: 0, z: 0}
-    localScale: {x: 1, y: 1, z: 1}
 --- !u!1 &2031010392
 GameObject:
   m_ObjectHideFlags: 0
@@ -3373,6 +3403,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4013332285130813643, guid: d037ac6d8d7521a4f915aba72c0e23a1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1850820562}
+    - targetCorrespondingSourceObject: {fileID: 4013332285130813643, guid: d037ac6d8d7521a4f915aba72c0e23a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1850820565}
     - targetCorrespondingSourceObject: {fileID: 4013332285130813643, guid: d037ac6d8d7521a4f915aba72c0e23a1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1850820564}

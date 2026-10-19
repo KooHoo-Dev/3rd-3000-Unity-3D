@@ -149,27 +149,20 @@ namespace Study3D.FpsGame.Player
             // 발사 하는 버튼
             if(SimpleInput.GetMouseButton(SimpleInput.MouseButton.Left))
             {
-                // bool successFire = LocalPlayer.localPlayer.Fire();
-                //
-                // // 발사 성공일 경우
-                // if (successFire)
-                // {
-                //     // 해당 animator의 발사동작은 Any State에 들어가므로,
-                //     // 남은 트리거를 지우고 다시 겁니다.
-                //     animator.ResetTrigger(Fire);
-                //     animator.SetTrigger(Fire);
-                // }
+                bool successFire = Player.LocalPlayer.Fire();
+                
+                // 발사 성공일 경우
+                if (successFire)
+                {
+                    // 해당 animator의 발사동작은 Any State에 들어가므로,
+                    // 남은 트리거를 지우고 다시 겁니다.
+                    animator.ResetTrigger(Fire);
+                    animator.SetTrigger(Fire);
+                }
             }
 
             // 재장전
-            if (SimpleInput.GetKeyDown(Key.R))
-            {
-                PlayReloadAnimation();
-                //LocalPlayer.localPlayer.RequestReload();
-            }
-
-            if (SimpleInput.GetKeyDown(Key.Digit1)) PlayWeaponChangeAnimation();
-            if (SimpleInput.GetKeyDown(Key.Digit2)) PlayWeaponChangeAnimation();
+            if (SimpleInput.GetKeyDown(Key.R)) Player.LocalPlayer.RequestReload();
         }
         
         // 델리게이트를 연동하는 교안이어서 아래 함수가 있는거였습니다.
@@ -185,5 +178,7 @@ namespace Study3D.FpsGame.Player
             animator.ResetTrigger(Reload);
             animator.SetTrigger(Reload);
         }
+        
+        
     }
 }
