@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,9 +14,14 @@ namespace Study3D.FpsGame
         [Tooltip("총·유탄이 맞힐 적의 레이어 이름. Project Settings > Tags and Layers의 이름과 같아야 합니다")]
         [SerializeField] private string enemyLayerName = "Enemy";
 
+        [Header("환경 판정")]
+        [Tooltip("벽, 바닥처럼 탄을 막거나 튕겨내는 레이어 이름들 (관통, 도탄, 연쇄 차단 판정에 사용)")]
+        [SerializeField] private string[] environmentLayerNames = { "Default", "Pillars", "Trees", "Buildings", "Terrain" };
+
         public static CombatSystem Instance { get; private set; }
 
         public int EnemyMask { get; private set; }
+        public int EnvironmentMask { get; private set; }
 
         public event Action<CombatEvent> OnCombatEvent;
         public event Action<HealEvent> OnHealEvent;
@@ -36,6 +41,7 @@ namespace Study3D.FpsGame
             Instance = this;
             EnemyMask = LayerMask.GetMask(enemyLayerName);
             if (EnemyMask == 0) Debug.LogWarning($"{enemyLayerName} 레이어가 없어 총·유탄이 아무것도 맞히지 못합니다");
+            EnvironmentMask = LayerMask.GetMask(environmentLayerNames);
         }
 
         private void OnDestroy()
@@ -69,6 +75,12 @@ namespace Study3D.FpsGame
                         break;
                 }
             }
+        }
+
+        // 콜라이더가 적 레이어에 속하는지 검사합니다.
+        public bool IsEnemy(Collider collider)
+        {
+            return (EnemyMask & (1 << collider.gameObject.layer)) != 0;
         }
 
         public void RegisterMonster(IDamageable monster)

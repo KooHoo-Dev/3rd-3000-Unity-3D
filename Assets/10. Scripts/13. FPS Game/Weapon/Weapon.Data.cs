@@ -36,6 +36,9 @@ namespace Study3D.FpsGame.Weapon
             AssaultRifle,
             GrenadeLauncher,
             Shotgun,
+            Railgun,
+            RicochetRifle,
+            TeslaCoil,
         }
     }
 }

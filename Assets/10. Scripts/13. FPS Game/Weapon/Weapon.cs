@@ -20,13 +20,20 @@ namespace Study3D.FpsGame.Weapon
         // - 상속받은 클래스들이 재정의 해야 합니다.
         public abstract bool Fire();
 
-        private void Awake()
+        // 발사 버튼을 뗀 순간 호출됩니다.
+        // - 누르고 있다가 떼면 발사하는 무기(Railgun)처럼 '뗀 순간'이 의미 있는 무기만 재정의합니다.
+        // - 이 시점에 실제로 발사했다면 true를 돌려줘서 발사 연출(애니메이션)을 재생하게 합니다.
+        public virtual bool ReleaseFire() => false;
+
+        // 상속받은 무기가 Awake/Update에 자기 처리를 덧붙일 수 있도록 virtual로 열어둡니다.
+        // 재정의할 때는 반드시 base.Awake() / base.Update()를 호출해야 합니다.
+        protected virtual void Awake()
         {
             muzzleFlash.SetActive(false);
             CurrentAmmo = TotalAmmo;
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             // 다음 발사 가능 시간을 체크하는 변수는 계속 더해 줍니다.
             CurrentFireRate += Time.deltaTime;
@@ -41,7 +48,7 @@ namespace Study3D.FpsGame.Weapon
                 muzzleFlash.SetActive(false); //꺼줍니다
         }
 
-        public void Reload()
+        public virtual void Reload()
         {
             CurrentAmmo = totalAmmo;
         }
@@ -69,17 +76,31 @@ namespace Study3D.FpsGame.Weapon
                     ray, out RaycastHit hit, 
                     Range, CombatSystem.Instance.EnemyMask) == false) return;
             Debug.DrawRay(ray.origin, ray.direction * Range, Color.red, 10f);
-            
+
+            SendDamage(hit.collider, hit.point, Damage);
+        }
+
+        // 판정 방식(Ray, Overlap, 충돌)과 상관없이
+        // "무엇이, 어디서, 얼마만큼" 맞았는지만 넘기면 CombatEvent를 만들어 CombatSystem에 넣어줍니다.
+        protected void SendDamage(Collider target, Vector3 hitPoint, int damage,
+            DamageType damageType = DamageType.Normal)
+        {
+            // 등록된 몬스터가 있으면 그 몬스터가 받고,
+            // 아직 몬스터가 없는 단계에서는 기존처럼 LocalPlayer를 임시 수신자로 사용합니다.
+            IDamageable receiver = CombatSystem.Instance.GetMonsterOrNull(target);
+            if (receiver == null) receiver = Player.Player.LocalPlayer;
+
             CombatEvent combatEvent = new CombatEvent();
             combatEvent.Sender = Player.Player.LocalPlayer;
-            combatEvent.Receiver = Player.Player.LocalPlayer; // 나중에 몬스터로
-            combatEvent.Damage = 10;
-            combatEvent.HitPosition = hit.point;
-            combatEvent.Collider = hit.collider;
-            
+            combatEvent.Receiver = receiver;
+            combatEvent.Damage = damage;
+            combatEvent.DamageType = damageType;
+            combatEvent.HitPosition = hitPoint;
+            combatEvent.Collider = target;
+
             CombatSystem.Instance.AddInGameEvent(combatEvent);
         }
-        
+
         // 총구 화염을 제어하는 함수 입니다.
         protected void PlayMuzzleFlash()
         {

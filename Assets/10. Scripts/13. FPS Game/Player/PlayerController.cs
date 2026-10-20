@@ -161,6 +161,16 @@ namespace Study3D.FpsGame.Player
                 }
             }
 
+            // 발사 버튼을 뗀 순간 (Railgun처럼 떼야 발사되는 무기용)
+            if (SimpleInput.GetMouseButtonUp(SimpleInput.MouseButton.Left))
+            {
+                if (Player.LocalPlayer.ReleaseFire())
+                {
+                    animator.ResetTrigger(Fire);
+                    animator.SetTrigger(Fire);
+                }
+            }
+
             // 재장전
             if (SimpleInput.GetKeyDown(Key.R)) Player.LocalPlayer.RequestReload();
             

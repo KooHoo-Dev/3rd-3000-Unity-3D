@@ -39,9 +39,21 @@ namespace Study3D.FpsGame.Feedback
                 combatEvent.HitPosition, 
                 $"{combatEvent.Damage}",
                 damageTextDuration,
-                Color.red);
+                GetDamageColor(combatEvent.DamageType));
             
             dmgText.gameObject.SetActive(true);
+        }
+
+        // 피해 종류별로 데미지 텍스트 색을 다르게 보여줍니다.
+        private static Color GetDamageColor(DamageType damageType)
+        {
+            switch (damageType)
+            {
+                case DamageType.Pierce:   return new Color(0.4f, 0.8f, 1.0f);  // 하늘색
+                case DamageType.Ricochet: return new Color(1.0f, 0.85f, 0.2f); // 노란색
+                case DamageType.Electric: return new Color(0.7f, 0.5f, 1.0f);  // 보라색
+                default:                  return Color.red;
+            }
         }
     }
 }

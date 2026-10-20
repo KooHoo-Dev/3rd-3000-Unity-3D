@@ -75,6 +75,23 @@ namespace Study3D.FpsGame.Player
             if (SimpleInput.GetKeyDown(Key.Digit3))
                 Player.LocalPlayer.ChangeWeapon(
                     weaponWeaponController.GetWeaponOrNull(Weapon.Weapon.WeaponType.Shotgun));
+
+            if (SimpleInput.GetKeyDown(Key.Digit4))
+                TryChangeWeapon(Weapon.Weapon.WeaponType.Railgun);
+
+            if (SimpleInput.GetKeyDown(Key.Digit5))
+                TryChangeWeapon(Weapon.Weapon.WeaponType.RicochetRifle);
+
+            if (SimpleInput.GetKeyDown(Key.Digit6))
+                TryChangeWeapon(Weapon.Weapon.WeaponType.TeslaCoil);
+        }
+
+        // 인스펙터에 아직 연결되지 않은 무기 슬롯이면 교체하지 않습니다.
+        private void TryChangeWeapon(Weapon.Weapon.WeaponType type)
+        {
+            Weapon.Weapon target = weaponWeaponController.GetWeaponOrNull(type);
+            if (target == null) return;
+            ChangeWeapon(target);
         }
 
         private void OnEnable()
@@ -115,6 +132,12 @@ namespace Study3D.FpsGame.Player
         public bool Fire()
         {
             return CurrentWeapon.Fire();
+        }
+
+        // 발사 버튼을 뗀 순간. 실제로 발사가 일어났으면 true
+        public bool ReleaseFire()
+        {
+            return CurrentWeapon.ReleaseFire();
         }
 
         public void RequestReload()

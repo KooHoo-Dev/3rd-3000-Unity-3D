@@ -119,11 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &79162940 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7752854629243306815, guid: d037ac6d8d7521a4f915aba72c0e23a1, type: 3}
-  m_PrefabInstance: {fileID: 4280219658241528798}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &89311675
 GameObject:
   m_ObjectHideFlags: 0
@@ -2170,7 +2165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.FpsGame.Weapon.Shotgun
   weaponName: Shotgun
-  fireRate: 0.05
+  fireRate: 1
   damage: 10
   totalAmmo: 30
   range: 30
@@ -2180,10 +2175,6 @@ MonoBehaviour:
     localScale: {x: 0, y: 0, z: 0}
   muzzleFlash: {fileID: 1430913534}
   muzzleFlashDuration: 0.1
-  fireTransform: {fileID: 79162940}
-  distance: 0.5
-  radius: 0.2
-  bulletCount: 12
 --- !u!1 &2031010392
 GameObject:
   m_ObjectHideFlags: 0
