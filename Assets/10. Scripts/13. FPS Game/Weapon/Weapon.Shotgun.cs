@@ -20,6 +20,8 @@ namespace Study3D.FpsGame.Weapon
 
             for (int i = 0; i < bulletCount; i++)
             {
+                // Random.insideUnitCircle
+                // : 단위원(반지름 1)에서 랜덤한 점의 위치를 하나 추출합니다.
                 Vector2 circlePoint = Random.insideUnitCircle * radius;
                 Vector3 spreadPoint = fireTransform.TransformPoint(
                     new Vector3(circlePoint.x, circlePoint.y, distance)
