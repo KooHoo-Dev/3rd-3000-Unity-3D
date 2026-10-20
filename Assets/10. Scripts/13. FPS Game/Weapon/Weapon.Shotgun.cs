@@ -12,9 +12,10 @@ namespace Study3D.FpsGame.Weapon
         
         public override bool Fire()
         {
+            if(IsAbleFire() == false) return false;
             // Fire함수가 호출 되었을때 12번의 Ray를 발사하는 로직만 만들면
             // 샷건 완성입니다.
-
+            
             Vector3 firePoint = fireTransform.position;
 
             for (int i = 0; i < bulletCount; i++)
@@ -27,6 +28,8 @@ namespace Study3D.FpsGame.Weapon
                 FireRay(new Ray(firePoint, direction));
             }
 
+            PlayMuzzleFlash();
+            
             return true;
         }
     }
