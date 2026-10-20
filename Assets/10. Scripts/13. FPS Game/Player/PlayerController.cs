@@ -163,6 +163,8 @@ namespace Study3D.FpsGame.Player
 
             // 재장전
             if (SimpleInput.GetKeyDown(Key.R)) Player.LocalPlayer.RequestReload();
+            
+           
         }
         
         // 델리게이트를 연동하는 교안이어서 아래 함수가 있는거였습니다.

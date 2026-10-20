@@ -1,6 +1,8 @@
 ﻿using System;
+using Study.Utilities;
 using Study3D.FpsGame.Weapon;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Study3D.FpsGame.Player
 {
@@ -60,6 +62,21 @@ namespace Study3D.FpsGame.Player
             ChangeWeapon(changeTarget);
         }
 
+        private void Update()
+        {
+            if (SimpleInput.GetKeyDown(Key.Digit1))
+                Player.LocalPlayer.ChangeWeapon(
+                    weaponWeaponController.GetWeaponOrNull(Weapon.Weapon.WeaponType.AssaultRifle));
+            
+            if (SimpleInput.GetKeyDown(Key.Digit2))
+                Player.LocalPlayer.ChangeWeapon(
+                    weaponWeaponController.GetWeaponOrNull(Weapon.Weapon.WeaponType.GrenadeLauncher));
+            
+            if (SimpleInput.GetKeyDown(Key.Digit3))
+                Player.LocalPlayer.ChangeWeapon(
+                    weaponWeaponController.GetWeaponOrNull(Weapon.Weapon.WeaponType.Shotgun));
+        }
+
         private void OnEnable()
         {
             animStateEventListener.OnOccursAnimStateEvent += OnAnimEvent;
@@ -107,7 +124,7 @@ namespace Study3D.FpsGame.Player
             OnRequestedReload?.Invoke();
         }
 
-        private void ChangeWeapon(Weapon.Weapon weapon)
+        public void ChangeWeapon(Weapon.Weapon weapon)
         {
             if (CurrentWeapon != null)
             {
