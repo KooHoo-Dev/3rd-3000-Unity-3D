@@ -18,8 +18,10 @@ namespace Study3D.FpsGame.Player
 
         private void OnEnable()
         {
-            Player.LocalPlayer.OnStartChangedWeapon += PlayWeaponChangeAnimation;
-            Player.LocalPlayer.OnRequestedReload += PlayReloadAnimation;
+            // 싱글톤 개체를 못찾으니까, 컴포넌트로 가져와 줍시다.
+            var localPlayer = GetComponent<LocalPlayer>();
+            localPlayer.OnStartChangedWeapon += PlayWeaponChangeAnimation;
+            localPlayer.OnRequestedReload += PlayReloadAnimation;
         }
 
         private void OnDisable()

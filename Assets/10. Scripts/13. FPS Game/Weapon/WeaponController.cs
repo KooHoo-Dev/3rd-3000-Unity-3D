@@ -19,8 +19,8 @@ namespace Study3D.FpsGame.Weapon
         {
             // 시작하면 일단 꺼둡니다. 켜는건 외부 클래스에서
             assaultRifle.gameObject.SetActive(false);
-            grenadeLauncher.gameObject.SetActive(false);
-            shotgun.gameObject.SetActive(false);
+            grenadeLauncher?.gameObject.SetActive(false);
+            shotgun?.gameObject.SetActive(false);
         }
 
         public Weapon GetWeaponOrNull(Weapon.WeaponType type)

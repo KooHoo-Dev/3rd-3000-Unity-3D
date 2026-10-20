@@ -55,9 +55,11 @@ namespace Study3D.FpsGame.Weapon
         protected void FireRay(Ray ray)
         {
             // Raycast 검사 결과가 false라면 종료
-            if (Physics.Raycast(ray, out RaycastHit hit, Range) == false) return;
-            Debug.DrawRay(ray.origin, ray.direction * Range, Color.red, 10f);
-
+            if (Physics.Raycast(
+                    ray, out RaycastHit hit, 
+                    Range, CombatSystem.Instance.EnemyMask) == false) return;
+            //Debug.DrawRay(ray.origin, ray.direction * Range, Color.red, 10f);
+            
             CombatEvent combatEvent = new CombatEvent();
             combatEvent.Sender = Player.Player.LocalPlayer;
             combatEvent.Receiver = Player.Player.LocalPlayer; // 나중에 몬스터로

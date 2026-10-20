@@ -1,4 +1,5 @@
 ﻿using System;
+using Study3D.FpsGame.UI;
 using UnityEngine;
 
 namespace Study3D.FpsGame.Feedback
@@ -11,7 +12,9 @@ namespace Study3D.FpsGame.Feedback
     {
         [Header("Settings")] 
         [SerializeField] private string bloodPoolKey = "Blood";
-
+        [SerializeField] private string damageTextPoolKey = "DamageText";
+        [SerializeField] private float damageTextDuration = 0.5f;
+        
         private void Start()
         {
             CombatSystem.Instance.OnCombatEvent += OnHit;
@@ -28,6 +31,17 @@ namespace Study3D.FpsGame.Feedback
             var blood = ObjectPoolManager.Instance.GetObjectOrNull(bloodPoolKey);
             blood.GameObject.transform.position = combatEvent.HitPosition;
             blood.GameObject.SetActive(true);
+            
+            FloatingText dmgText = 
+                ObjectPoolManager.Instance.GetObjectOrNull(damageTextPoolKey) as FloatingText;
+            
+            dmgText.Set(
+                combatEvent.HitPosition, 
+                $"{combatEvent.Damage}",
+                damageTextDuration,
+                Color.red);
+            
+            dmgText.gameObject.SetActive(true);
         }
     }
 }
