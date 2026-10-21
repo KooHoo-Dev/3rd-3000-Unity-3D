@@ -1,8 +1,5 @@
-﻿using System;
-using Study.Utilities;
-using Study3D.FpsGame.Weapon;
+﻿using Study3D.FpsGame.Weapon;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Study3D.FpsGame.Player
 {
@@ -24,7 +21,7 @@ namespace Study3D.FpsGame.Player
         
         // Weapon을 연결하기 위한 참조들을 설정해 줍니다.
         [SerializeField] private Transform weaponParent;
-        [SerializeField] private WeaponController weaponWeaponController;
+        [SerializeField] private WeaponController weaponController;
         
         [Header("애니메이션 콜백")]
         [SerializeField] private string reloadCompleteEvent = "ReloadComplete";
@@ -58,38 +55,14 @@ namespace Study3D.FpsGame.Player
 
         private void Start()
         {
-            Weapon.Weapon changeTarget = weaponWeaponController.GetWeaponOrNull(startWeapon);
+            Weapon.Weapon changeTarget = weaponController.GetWeaponOrNull(startWeapon);
             ChangeWeapon(changeTarget);
-        }
-
-        private void Update()
-        {
-            if (SimpleInput.GetKeyDown(Key.Digit1))
-                Player.LocalPlayer.ChangeWeapon(
-                    weaponWeaponController.GetWeaponOrNull(Weapon.Weapon.WeaponType.AssaultRifle));
-            
-            if (SimpleInput.GetKeyDown(Key.Digit2))
-                Player.LocalPlayer.ChangeWeapon(
-                    weaponWeaponController.GetWeaponOrNull(Weapon.Weapon.WeaponType.GrenadeLauncher));
-            
-            if (SimpleInput.GetKeyDown(Key.Digit3))
-                Player.LocalPlayer.ChangeWeapon(
-                    weaponWeaponController.GetWeaponOrNull(Weapon.Weapon.WeaponType.Shotgun));
-
-            if (SimpleInput.GetKeyDown(Key.Digit4))
-                TryChangeWeapon(Weapon.Weapon.WeaponType.Railgun);
-
-            if (SimpleInput.GetKeyDown(Key.Digit5))
-                TryChangeWeapon(Weapon.Weapon.WeaponType.RicochetRifle);
-
-            if (SimpleInput.GetKeyDown(Key.Digit6))
-                TryChangeWeapon(Weapon.Weapon.WeaponType.TeslaCoil);
         }
 
         // 인스펙터에 아직 연결되지 않은 무기 슬롯이면 교체하지 않습니다.
         private void TryChangeWeapon(Weapon.Weapon.WeaponType type)
         {
-            Weapon.Weapon target = weaponWeaponController.GetWeaponOrNull(type);
+            Weapon.Weapon target = weaponController.GetWeaponOrNull(type);
             if (target == null) return;
             ChangeWeapon(target);
         }
@@ -167,14 +140,45 @@ namespace Study3D.FpsGame.Player
 
         public void TakeDamage(CombatEvent combatEvent)
         {
-            
+            if (IsDead) return;
+
+            Health.TakeDamage(combatEvent.Damage);
+            OnTakenDamage?.Invoke(combatEvent.Damage, Health.HP, Health.MaxHP);
+
+            if (Health.IsDead)
+            {
+                IsDead = true;
+                OnDied?.Invoke();
+            }
         }
 
         public void TakeHeal(HealEvent healEvent)
         {
-            throw new System.NotImplementedException();
+            if (IsDead) return;
+            Health.Heal(healEvent.Heal);
         }
 
         #endregion
+        
+        private void OnTriggerEnter(Collider other)
+        {
+            var triggerItem = other.GetComponent<TriggerItem>();
+            if (triggerItem == null) return;
+
+            TouchItemEvent touchItemEvent = new TouchItemEvent();
+            touchItemEvent.Type = triggerItem.Type;
+            touchItemEvent.Position = other.ClosestPoint(transform.position);
+            OnTouchedItem?.Invoke(touchItemEvent);
+
+            var weaponType = Mapper.GetWeaponType(triggerItem.Type);
+            var changeTarget = weaponController.GetWeaponOrNull(weaponType);
+            if (changeTarget != null)
+            {
+                if (CurrentWeapon != changeTarget) ChangeWeapon(changeTarget);
+                else RequestReload();
+            }
+
+            Destroy(triggerItem.gameObject);
+        }
     }
 }

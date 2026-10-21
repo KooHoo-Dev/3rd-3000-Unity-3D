@@ -29,7 +29,7 @@ namespace Study3D.FpsGame.Weapon
         // 재정의할 때는 반드시 base.Awake() / base.Update()를 호출해야 합니다.
         protected virtual void Awake()
         {
-            muzzleFlash.SetActive(false);
+            if(muzzleFlash != null) muzzleFlash.SetActive(false);
             CurrentAmmo = TotalAmmo;
         }
 
@@ -104,6 +104,8 @@ namespace Study3D.FpsGame.Weapon
         // 총구 화염을 제어하는 함수 입니다.
         protected void PlayMuzzleFlash()
         {
+            if(muzzleFlash == null) return;
+            
             // 총구 화염이 밋밋하기에 랜덤한 회전값을 부여하여 연속으로 사격 하더라도
             // 다른 모양으로 표현 될 수 있게 효과를 줍니다.
             float randomRoll = UnityEngine.Random.Range(0.0f, 360.0f);

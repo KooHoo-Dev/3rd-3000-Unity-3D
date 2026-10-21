@@ -4,7 +4,7 @@ namespace Study3D.FpsGame.Player
 {
     public partial class LocalPlayer
     {
-        //public event Action<TouchItemEvent> OnTouchedItem;
+        public event Action<TouchItemEvent> OnTouchedItem;
         public event Action OnStartChangedWeapon;
         public event Action OnEndedChangedWeapon;
         public event Action OnRequestedReload;

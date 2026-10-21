@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2347666332679836049}
   - component: {fileID: 4355908765992859562}
   - component: {fileID: 3144542178014903951}
-  - component: {fileID: -714118805470230420}
+  - component: {fileID: 6190556244746043931}
   m_Layer: 0
   m_Name: DamageText
   m_TagString: Untagged
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &-714118805470230420
+--- !u!114 &6190556244746043931
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,3 +150,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df3a28d20d244778133a7d72a6964c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.FpsGame.UI.FloatingText
+  riseSpeed: 2

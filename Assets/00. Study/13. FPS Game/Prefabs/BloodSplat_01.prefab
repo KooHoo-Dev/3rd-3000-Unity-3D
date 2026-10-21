@@ -11,14 +11,14 @@ GameObject:
   - component: {fileID: 3874218858663544647}
   - component: {fileID: 3919401788796348449}
   - component: {fileID: 1421252150583957698}
-  - component: {fileID: -4263775309868281336}
+  - component: {fileID: 8998263556256251778}
   m_Layer: 0
   m_Name: BloodSplat_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3874218858663544647
 Transform:
   m_ObjectHideFlags: 0
@@ -4718,7 +4718,7 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
---- !u!114 &-4263775309868281336
+--- !u!114 &8998263556256251778
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

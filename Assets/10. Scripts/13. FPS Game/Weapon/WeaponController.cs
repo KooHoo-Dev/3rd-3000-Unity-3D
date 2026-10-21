@@ -14,9 +14,6 @@ namespace Study3D.FpsGame.Weapon
         [SerializeField] private Weapon assaultRifle;
         [SerializeField] private Weapon grenadeLauncher;
         [SerializeField] private Weapon shotgun;
-        [SerializeField] private Weapon railgun;
-        [SerializeField] private Weapon ricochetRifle;
-        [SerializeField] private Weapon teslaCoil;
 
         private void OnEnable()
         {
@@ -24,10 +21,6 @@ namespace Study3D.FpsGame.Weapon
             assaultRifle.gameObject.SetActive(false);
             grenadeLauncher?.gameObject.SetActive(false);
             shotgun?.gameObject.SetActive(false);
-            // ?.는 UnityEngine.Object의 '파괴됨/미할당' 체크를 하지 않으므로 if로 검사합니다.
-            if (railgun != null) railgun.gameObject.SetActive(false);
-            if (ricochetRifle != null) ricochetRifle.gameObject.SetActive(false);
-            if (teslaCoil != null) teslaCoil.gameObject.SetActive(false);
         }
 
         public Weapon GetWeaponOrNull(Weapon.WeaponType type)
@@ -40,12 +33,6 @@ namespace Study3D.FpsGame.Weapon
                     return grenadeLauncher;
                 case Weapon.WeaponType.Shotgun:
                     return shotgun;
-                case Weapon.WeaponType.Railgun:
-                    return railgun;
-                case Weapon.WeaponType.RicochetRifle:
-                    return ricochetRifle;
-                case Weapon.WeaponType.TeslaCoil:
-                    return teslaCoil;
                 default:
                     return null;
             }
