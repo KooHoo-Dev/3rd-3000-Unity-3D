@@ -31,15 +31,23 @@ namespace Study3D.FpsGame.Feedback
             var blood = ObjectPoolManager.Instance.GetObjectOrNull(bloodPoolKey);
             blood.GameObject.transform.position = combatEvent.HitPosition;
             blood.GameObject.SetActive(true);
+
+          
             
             FloatingText dmgText = 
                 ObjectPoolManager.Instance.GetObjectOrNull(damageTextPoolKey) as FloatingText;
+            
+            Color damageTextColor = Color.orange;
+            
+            var part = BossMonster.CurrentSceneBossMonster.GetPart(combatEvent.Collider);
+            if (part != BossMonster.Parts.Unknown) damageTextColor = GetBossPartColor(part);
+            else damageTextColor = GetDamageColor(combatEvent.DamageType);
             
             dmgText.Set(
                 combatEvent.HitPosition, 
                 $"{combatEvent.Damage}",
                 damageTextDuration,
-                GetDamageColor(combatEvent.DamageType));
+                damageTextColor);
             
             dmgText.gameObject.SetActive(true);
         }
@@ -54,6 +62,19 @@ namespace Study3D.FpsGame.Feedback
                 case DamageType.Electric: return new Color(0.7f, 0.5f, 1.0f);  // 보라색
                 default:                  return Color.red;
             }
+        }
+
+        private static Color GetBossPartColor(BossMonster.Parts part)
+        {
+            return part switch
+            {
+                BossMonster.Parts.Unknown => Color.orange,
+                BossMonster.Parts.Spine => Color.yellow,
+                BossMonster.Parts.Head => Color.green,
+                BossMonster.Parts.LeftArm => Color.blue,
+                BossMonster.Parts.RightArm => Color.blue,
+                _ => Color.orange
+            };
         }
     }
 }
