@@ -24,6 +24,11 @@ namespace Study3D.FpsGame
             public float NormalizedTime => time;
             public string Parameter => parameter;
             public bool IsComplete { get; set; }
+
+            public void SetTime(float newTime)
+            {
+                time = Mathf.Clamp01(newTime);;
+            }
         }
 
         [Header("상태 진행률(0~1)에 맞춰 보낼 신호")]
@@ -53,6 +58,20 @@ namespace Study3D.FpsGame
                 eventData.IsComplete = true;
                 eventListener.OccursAnimStateEvent(eventData.Name, eventData.Parameter);
             }
+        }
+
+        public bool TryGetAnimStateEventByName(string targetName, out AnimStateEvent animStateEvent)
+        {
+            
+            for (int i = 0; i < events.Length; i++)
+            {
+                if(events[i].Name.Equals(targetName) == false) continue;
+                animStateEvent = events[i];
+                return true;
+            }
+
+            animStateEvent = null;
+            return false;
         }
     }
 }

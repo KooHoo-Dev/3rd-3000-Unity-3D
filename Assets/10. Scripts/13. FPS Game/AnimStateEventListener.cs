@@ -7,7 +7,11 @@
 //  - 없음
 // ─────────────────────────────────────────────
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using NUnit.Framework;
+using Study.Utilities;
 
 namespace Study3D.FpsGame
 {
@@ -15,10 +19,43 @@ namespace Study3D.FpsGame
     {
         // (신호 이름, 매개변수)
         public event Action<string, string> OnOccursAnimStateEvent;
-
+        
         public void OccursAnimStateEvent(string eventName, string parameter)
         {
             OnOccursAnimStateEvent?.Invoke(eventName, parameter);
+        }
+
+        public bool TryChangeAnimStateEventTime(string eventName, float newTime)
+        {
+            var array = GetComponent<Animator>().GetBehaviours<AnimStateEventSender>();
+
+            var eventList = new List<AnimStateEventSender.AnimStateEvent>();
+
+            foreach (AnimStateEventSender animStateEventSender in array)
+            {
+                if (animStateEventSender.TryGetAnimStateEventByName(eventName,
+                        out AnimStateEventSender.AnimStateEvent animStateEvent))
+                {
+                    eventList.Add(animStateEvent);
+                }
+            }
+
+            if (eventList.Count == 0) return false;
+            
+            foreach (var asEvent in eventList)
+                asEvent.SetTime(newTime);
+
+            return true;
+        }
+        
+        public void Test()
+        {
+            TryChangeAnimStateEventTime("Input_Start", 0.3f);
+        }
+
+        private void Start()
+        {
+            Test();
         }
     }
 }
